@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<h3>Makaleler</h3>
+<hr>
+
+{% if articles %}
+                                                                               <!--Search barının implementasyonu yapıldı ve sağ tarafa kaydırıldı. -->
+<form action="/search" method = "post">
+<p align="right"><input type="text" name="keyword" class="input-sm" maxlength="64" placeholder="Ara.."> <button type="submit" class="btn btn-primary">Ara</button></p>
+
+</form>
+
+
+
+<ul class ="list group">
+{% for i in articles  %}
+<li class = "list-group-item"><a href ="/article/{{i.id}}"> {{i.title}} </a></li>
+{% endfor %}
+</ul>
+
+{% else %}
+
+<div class = "alert alert-danger"> Bu blogta henüz makale bulunmamaktadır. </div>
+
+{% endif %}
+
+{% endblock body %}
